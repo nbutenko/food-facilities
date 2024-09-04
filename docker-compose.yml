@@ -1,0 +1,17 @@
+services:
+  psql:
+    image: "postgres:latest"
+    container_name: estee
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/docker-entrypoint-initdb.d/data
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: estee
+
+volumes:
+  postgres-data:
