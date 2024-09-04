@@ -127,7 +127,9 @@ const FoodFacilitiesList: React.FC = () => {
                 ))
               ) : (
                 <StyledTableRow className='italic'>
-                  No food faicilities to display
+                  <TableCell className='bg-white'>
+                    No food faicilities to display
+                  </TableCell>
                 </StyledTableRow>
               )}
             </TableBody>
