@@ -1,0 +1,54 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin-arm64", "linux-musl", "linux-arm64-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model FoodFacility {
+  id                        Int                @id @default(autoincrement())
+  location_id               Int?
+  applicant                 String?
+  facility_type             String?
+  cnn                       Int?
+  location_description      String?
+  address                   String?
+  blocklot                  String?
+  block                     String?
+  lot                       String?
+  permit                    String?
+  status                    FoodFacilityStatus
+  food_items                String?
+  x                         Decimal?
+  y                         Decimal?
+  latitude                  Decimal?
+  longitude                 String?
+  schedule                  String?
+  days_hours                String?
+  noi_sent                  String?
+  approved                  DateTime?
+  received                  Int?
+  prior_permit              Boolean?
+  expiration_date           DateTime?
+  location                  String?
+  fire_prevention_districts Decimal?
+  police_districts          Decimal?
+  supervisor_districts      Decimal?
+  zip_codes                 Decimal?
+  neighborhoods_old         Decimal?
+
+  @@map("food_facility")
+}
+
+enum FoodFacilityStatus {
+  REQUESTED
+  ISSUED
+  APPROVED
+  SUSPEND
+  EXPIRED
+
+  @@map("food_facility_status")
+}
